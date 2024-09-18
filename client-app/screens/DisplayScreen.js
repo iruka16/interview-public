@@ -31,27 +31,18 @@ function DisplayScreen(){
       return <Text>{error}</Text>;
     }
 
-    // const imageMap = {
-    //     batman: require('../client-app/assets/batman.png'),
-    //     spiderman: require('../client-app/assets/spiderman.jpg')
-
-
-    // }
-    // const getImageSource = (gifname) => {
-    //     return imageMap[gifname] || require('../client-app/assets/images.png'); // default image
-    //   };
     const imageMap = {
         patrick: require('../assets/Patrick_Star.svg.png'),
         batman: require('../assets/batman.png'),
         spiderman: require('../assets/spiderman.jpg'),        
         spongebob: require('../assets/spongebob.jpg'),
         superman: require('../assets/superman.jpg'),
-        default: require('../assets/images.png'), // Default image
+        default: require('../assets/images.png'), 
       };
       useEffect(() => {
-        const lowerCaseGifName = newGifName.toLowerCase(); // Case-insensitive matching
-        setImageSource(imageMap[lowerCaseGifName] || imageMap.default); // Set the new image source
-      }, [newGifName]); // Dependency on newGifName
+        const lowerCaseGifName = newGifName.toLowerCase(); 
+        setImageSource(imageMap[lowerCaseGifName] || imageMap.default);
+      }, [newGifName]); 
     
     return (
       <View style={styles.container}>
@@ -62,8 +53,8 @@ function DisplayScreen(){
             {editing ? (
                 <TextInput
                     style={styles.input}
-                    onChangeText={setNewGifName} // Update local state with new gifname
-                    value={newGifName} // Controlled input
+                    onChangeText={setNewGifName} 
+                    value={newGifName}
                     placeholder="Edit GIF Name"
                 />
             ) : (

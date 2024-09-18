@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
  import { Users } from './model/users.model.js';
 import cors from 'cors';
 
-//TvQ1yGt4csNc1lcr
+
 const app = express()
 const PORT = 3000;
 
@@ -43,24 +43,23 @@ app.get('/api/users/:username', async(req, res) =>{
     }
 });
 
-// PATCH route to find a user by name and update their gifname
+
 app.patch('/api/users/:name', async (req, res) => {
-    const { name } = req.params;  // Get the user's name from URL parameters
-    const { gifname } = req.body;  // Get the new gifname from the request body
-  
+    const { name } = req.params;  
+    const { gifname } = req.body;  
     try {
-      // Find the user by their "users" field (name) and update their gifname
+     
       const updatedUser = await Users.findOneAndUpdate(
-        { users: name }, // Search by the 'users' field (username)
-        { gifname },     // Update the gifname
-        { new: true }    // Return the updated user object
+        { users: name }, 
+        { gifname },    
+        { new: true }    
       );
   
       if (!updatedUser) {
         return res.status(404).json({ message: 'User not found' });
       }
   
-      res.status(200).json(updatedUser);  // Return the updated user data
+      res.status(200).json(updatedUser);  
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

@@ -11,10 +11,10 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async ()=>{
 export const LoginUser = createAsyncThunk('user/LoginUser', async(userName) =>{
     try {
         const response = await axios.get(`${url}/${userName}`);
-        console.log('API Response:', response.data); // Check what data is returned
+        console.log('API Response:', response.data); 
         return response.data;
     } catch (error) {
-        console.log('Error fetching user:', error); // Log any error
+        console.log('Error fetching user:', error); 
         throw error;
 
     }
